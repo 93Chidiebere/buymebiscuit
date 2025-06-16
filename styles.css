@@ -1,0 +1,383 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff8e1;
+    /* light biscuit color */
+    color: #333;
+    padding-bottom: 3rem;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffecb3;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fddc8e;
+}
+
+.navbar h1 {
+    font-size: 1.3rem;
+    color: #a15500;
+}
+
+.menu-toggle {
+    font-size: 1.5rem;
+    color: #a15500;
+}
+
+/* Side Menu Styles */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 220px;
+    height: 100%;
+    background-color: #fff8e1;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem 1.2rem;
+    transition: right 0.3s ease;
+    z-index: 1001;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.side-menu li {
+    margin: 1rem 0;
+}
+
+.side-menu a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #a15500;
+    font-size: 1rem;
+}
+
+.side-menu .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #a15500;
+    cursor: pointer;
+}
+
+/* Overlay behind menu */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 1000;
+}
+
+/* Menu open state */
+.menu-open .side-menu {
+    right: 0;
+}
+
+.menu-open #overlay {
+    display: block;
+}
+
+/* Categories */
+.categories {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.categories button {
+    background-color: #fff;
+    border: 1px solid #f1c97c;
+    color: #a15500;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Blog Feed */
+.blog-feed {
+    max-width: 500px;
+    margin: 1rem 0 2rem 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.blog-post {
+    background-color: #ffffff;
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    transition: 0.2s ease;
+}
+
+.blog-post:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.post-content h2 {
+    font-size: 1rem;
+    color: #a15500;
+    margin-bottom: 0.3rem;
+}
+
+.post-content p {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.post-content span {
+    font-size: 0.8rem;
+    color: #c47100;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 0.4rem;
+}
+
+
+/* single post */
+
+
+.subtitle {
+    font-size: 14px;
+    color: #92400e;
+    margin-top: 5px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #b45309;
+    margin-bottom: 10px;
+}
+
+.timestamp {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-body p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.cta-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+.cta-box p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #b45309;
+    font-weight: 600;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #d97706;
+}
+
+
+/* Footer */
+.footer {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #fcd34d;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.footer-subtitle {
+    font-size: 14px;
+    color: #a16207;
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-links li a {
+    color: #92400e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+}
+
+.footer-credit {
+    font-size: 12px;
+    color: #a16207;
+}
+
+/* thanks */
+
+/* Thanks Page Styles */
+.thank-body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fef3c7;
+    /* amber-50 */
+    color: #3f3f46;
+    /* gray-800 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.thank-container {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.thank-emoji {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.thank-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #92400e;
+    /* amber-800 */
+    margin-bottom: 8px;
+}
+
+.thank-message {
+    font-size: 1.1rem;
+    color: #4b5563;
+    /* gray-700 */
+    margin-bottom: 24px;
+}
+
+.thank-button {
+    display: inline-block;
+    background-color: #d97706;
+    /* amber-600 */
+    color: #fff;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.thank-button:hover {
+    background-color: #b45309;
+    /* amber-700 */
+}
+
+/* backtotop */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background-color: #f59e0b;
+    /* amber-500 */
+    color: white;
+    border: none;
+    /* padding: 12px 12px; */
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    transition: background-color 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #b45309;
+    /* amber-700 */
+}

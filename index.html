@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Me Biscuit</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <a href="index.html" style="text-decoration: none;">
+            <h1>🍪 Buy Me Biscuit</h1>
+        </a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- Side Menu -->
+    <nav id="sideMenu" class="side-menu">
+        <button onclick="toggleMenu()" class="close-btn">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+
+    <!-- Hero Category Section -->
+    <section class="categories">
+        <button>🧠 Growth</button>
+        <button>💼 Work</button>
+        <button>💸 Finance</button>
+        <button>💻 Programming</button>
+        <button>📖 Religion</button>
+    </section>
+
+    <!-- Blog Feed -->
+    <main class="blog-feed">
+
+        <a href="singlepost.html" class="blog-post">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
+                alt="Post Image">
+            <div class="post-content">
+                <h2>How I Survived Monday at Work</h2>
+                <p>Yesterday was a rollercoaster. From the moment I walked into ...</p>
+                <span>Read More</span>
+            </div>
+        </a>
+        <a href="singlepost.html" class="blog-post">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
+                alt="Post Image">
+            <div class="post-content">
+                <h2>Small Habits That Changed My Life</h2>
+                <p>I didn’t expect waking up 10 minutes earlier would shift everything ...</p>
+                <span>Read More</span>
+            </div>
+        </a>
+        <a href="singlepost.html" class="blog-post">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
+                alt="Post Image">
+            <div class="post-content">
+                <h2>Small Habits That Changed My Life</h2>
+                <p>I didn’t expect waking up 10 minutes earlier would shift everything ...</p>
+                <span>Read More</span>
+            </div>
+        </a>
+        <a href="singlepost.html" class="blog-post">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
+                alt="Post Image">
+            <div class="post-content">
+                <h2>Small Habits That Changed My Life</h2>
+                <p>I didn’t expect waking up 10 minutes earlier would shift everything ...</p>
+                <span>Read More</span>
+            </div>
+        </a>
+
+        <!-- More blog posts below -->
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h2 class="footer-title">🍪 Buy Me Biscuit</h2>
+            <p class="footer-subtitle">Crunchy thoughts, crumbly stories.</p>
+
+            <ul class="footer-links">
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+
+            <p class="footer-credit">Made with ❤️ in Nigeria · © 2025</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+
+
+        // Get the button
+        const scrollBtn = document.getElementById("scrollToTopBtn");
+
+        // Show button after scrolling 100px
+        window.onscroll = function () {
+            scrollBtn.style.display = window.scrollY > 100 ? "block" : "none";
+        };
+
+        // On click, scroll to top
+        scrollBtn.onclick = function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+
+</body>
+
+</html>

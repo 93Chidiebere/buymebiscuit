@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biscuit Blog Post</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <a href="index.html" style="text-decoration: none;">
+            <h1>🍪 Buy Me Biscuit</h1>
+        </a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- Side Menu -->
+    <nav id="sideMenu" class="side-menu">
+        <button onclick="toggleMenu()" class="close-btn">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+
+    <!-- Post Content -->
+    <main class="container post">
+        <h2 class="post-title">Why Biscuits Are Better Than Bread</h2>
+        <p class="timestamp">Posted 2 days ago</p>
+
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
+            alt="Biscuit Image" class="post-image" />
+
+        <article class="post-body">
+            <p>Biscuits have been around for centuries, offering a delightful crunch and comfort in every bite. Unlike
+                bread, biscuits are quicker to make, often more flavorful, and perfect with tea or coffee.</p>
+            <p>Whether buttery, sweet, or savory, biscuits adapt to any meal. Their texture, portability, and nostalgic
+                appeal make them a favorite snack across cultures.</p>
+            <p>So next time you reach for bread, maybe consider a biscuit instead. It might just brighten your day.</p>
+        </article>
+
+        <!-- Call to Action -->
+        <div class="cta-box">
+            <p>If you learnt anything from this post, then buy me biscuit 🍪</p>
+            <a href="thank.html" class="cta-button">Buy Biscuit</a>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <h2 class="footer-title">🍪 Buy Me Biscuit</h2>
+            <p class="footer-subtitle">Crunchy thoughts, crumbly stories.</p>
+
+            <ul class="footer-links">
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Home</a></li>
+            </ul>
+
+            <p class="footer-credit">Made with ❤️ in Nigeria · © 2025</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+    </script>
+</body>
+
+</html>
