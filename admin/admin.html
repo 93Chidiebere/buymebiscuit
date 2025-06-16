@@ -5,56 +5,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add New Post – Biscuit Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles.css" />
 </head>
 
-<body class="bg-amber-50 text-gray-800">
-
-    <!-- Header -->
-    <!-- <header class="bg-amber-100 px-4 py-6 shadow-md text-center">
-        <h1 class="text-2xl font-bold text-amber-800">Add New Blog Post</h1>
-        <p class="text-amber-700 mt-1">Share your latest crunchy story 🍪</p>
-    </header> -->
-    <header class="bg-amber-100 p-4 border-b border-amber-200 text-center">
-        <h1 class="text-2xl font-bold text-amber-700">🍪 Buy Me Biscuit</h1>
-        <p class="text-sm text-amber-600 mt-1">Little bites of wisdom. If it helps,<br>buy me biscuit.</p>
+<body>
+    <header class="navbar">
+        <a href="index.html" style="text-decoration: none;">
+            <h1>🍪 Buy Me Biscuit</h1>
+        </a>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </header>
+     <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-    <!-- Form Container -->
-    <main class="max-w-xl mx-auto px-4 py-10">
-        <form action="/submit-post" method="POST" class="bg-white p-6 rounded-2xl shadow space-y-6">
 
-            <!-- Title Input -->
+    <!-- Side Menu -->
+    <nav id="sideMenu" class="side-menu">
+        <button onclick="toggleMenu()" class="close-btn">×</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+    <main>
+        <form action="/submit-post" method="POST">
             <div>
-                <label for="title" class="block text-sm font-medium text-amber-800 mb-1">Post Title</label>
-                <input type="text" id="title" name="title" required
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                <label for="title">Post Title</label>
+                <input type="text" id="title" name="title" required />
             </div>
 
-            <!-- Content Textarea -->
             <div>
-                <label for="content" class="block text-sm font-medium text-amber-800 mb-1">Content</label>
-                <textarea id="content" name="content" rows="8" required
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2 resize-y focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                <label for="content">Content</label>
+                <textarea id="content" name="content" rows="8" required></textarea>
             </div>
 
-            <!-- Submit Button -->
-            <div class="text-right">
-                <button type="submit"
-                    class="bg-amber-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-amber-700 transition">
-                    Publish Post
-                </button>
+            <div class="form-footer">
+                <button type="submit">Publish Post</button>
             </div>
-
         </form>
     </main>
-
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open');
+        }
+     </script>
 </body>
 
 </html>
