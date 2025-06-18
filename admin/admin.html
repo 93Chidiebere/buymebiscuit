@@ -17,10 +17,7 @@
         </a>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </header>
-     <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-
-    <!-- Side Menu -->
     <nav id="sideMenu" class="side-menu">
         <button onclick="toggleMenu()" class="close-btn">×</button>
         <ul>
@@ -31,10 +28,10 @@
         </ul>
     </nav>
 
-    <!-- Overlay -->
     <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
     <main>
-        <form action="/submit-post" method="POST">
+        <form id="postForm">
             <div>
                 <label for="title">Post Title</label>
                 <input type="text" id="title" name="title" required />
@@ -45,16 +42,88 @@
                 <textarea id="content" name="content" rows="8" required></textarea>
             </div>
 
+            <div>
+                <label for="image">Image URL</label>
+                <input type="url" id="image" name="image" required />
+            </div>
+
+            <div>
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="love">Personal Finance</option>
+                    <option value="growth">Work and LifeStyle</option>
+                    <option value="heartbreak">X (Twitter) banger posts</option>
+                    <option value="faith"> Growth Mindset</option>
+                    <option value="faith"> GIS & Programming</option>
+                    <option value="faith">Faith</option>
+                    <!-- Add more categories as needed -->
+                </select>
+            </div>
+
             <div class="form-footer">
                 <button type="submit">Publish Post</button>
             </div>
+            <p id="message" style="margin-top: 10px; font-weight: bold;"></p>
         </form>
     </main>
+
     <script>
         function toggleMenu() {
             document.body.classList.toggle('menu-open');
         }
-     </script>
+
+        // Auth check
+        window.addEventListener('DOMContentLoaded', () => {
+            const userId = localStorage.getItem('userId');
+            const role = localStorage.getItem('userRole');
+
+            if (!userId || role !== 'admin') {
+                alert('Access denied. Admins only.');
+                window.location.href = '../login.html';
+            }
+        });
+
+        const form = document.getElementById('postForm');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const title = form.title.value.trim();
+            const content = form.content.value.trim();
+            const image = form.image.value.trim();
+            const category = form.category.value;
+
+            try {
+                const res = await fetch('http://localhost:3000/api/posts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title,
+                        content,
+                        image,
+                        category
+                    })
+                });
+
+                const data = await res.text();
+
+                if (res.ok) {
+                    message.style.color = 'green';
+                    message.textContent = 'Post published!';
+                    form.reset();
+                } else {
+                    message.style.color = 'red';
+                    message.textContent = data;
+                }
+            } catch (err) {
+                console.error('Post failed:', err);
+                message.style.color = 'red';
+                message.textContent = 'Something went wrong.';
+            }
+        });
+    </script>
 </body>
 
 </html>

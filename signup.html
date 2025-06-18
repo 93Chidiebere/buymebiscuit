@@ -1,0 +1,96 @@
+<!-- public/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup – Buy Me Biscuit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin/css/style.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" style="text-decoration: none;">
+      <h1>🍪 Buy Me Biscuit</h1>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="sideMenu" class="side-menu">
+    <button onclick="toggleMenu()" class="close-btn">×</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Contact Me</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+  <main>
+    <form id="signupForm">
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div class="forgotten"><a href="login.html"> Login</a></div>
+      <div class="form-footer">
+        <button type="submit">Sign Up</button>
+      </div>
+      <p id="message" style="margin-top: 10px; font-weight: bold;"></p>
+    </form>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open');
+    }
+
+    const form = document.getElementById('signupForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      try {
+        const res = await fetch('http://localhost:3000/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const text = await res.text();
+
+        if (res.ok) {
+          message.style.color = 'green';
+          message.textContent = 'Signup successful! Redirecting to login...';
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1500);
+        } else {
+          message.style.color = 'red';
+          message.textContent = text;
+        }
+
+      } catch (err) {
+        message.style.color = 'red';
+        message.textContent = 'Something went wrong.';
+      }
+    });
+
+  </script>
+</body>
+
+</html>
