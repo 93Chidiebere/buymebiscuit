@@ -113,15 +113,6 @@
         document.getElementById('blogFeed').innerHTML = '<p>Error loading posts.</p>';
       });
 
-    function showBiscuitLoader() {
-      document.getElementById('biscuit-loader').classList.remove('hidden');
-    }
-
-    function hideBiscuitLoader() {
-      document.getElementById('biscuit-loader').classList.add('hidden');
-    }
-
-    showBiscuitLoader();
 
     fetch('https://biscuitserver.onrender.com/api/posts')
       .then(res => res.json())
