@@ -2,81 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biscuit Blog Post</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biscuit Blog Post</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="navbar">
+    <a href="index.html" style="text-decoration: none;">
+      <h1>🍪 Buy Me Biscuit</h1>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
 
-    <!-- Header -->
-    <header class="navbar">
-        <a href="index.html" style="text-decoration: none;">
-            <h1>🍪 Buy Me Biscuit</h1>
-        </a>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    </header>
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="side-menu">
+    <button onclick="toggleMenu()" class="close-btn">×</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Contact Me</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
 
-    <!-- Side Menu -->
-    <nav id="sideMenu" class="side-menu">
-        <button onclick="toggleMenu()" class="close-btn">×</button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About Me</a></li>
-            <li><a href="#">Contact Me</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
 
-    <!-- Overlay -->
-    <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+  <!-- Post Content -->
+  <main class="container post">
+    <h2 class="post-title">Loading...</h2>
+    <p class="timestamp"></p>
 
+    <img src="" alt="Post Image" class="post-image" style="display: none;" />
 
-    <!-- Post Content -->
-    <main class="container post">
-        <h2 class="post-title">Why Biscuits Are Better Than Bread</h2>
-        <p class="timestamp">Posted 2 days ago</p>
+    <article class="post-body">
+      <p>Please wait while we load the post...</p>
+    </article>
 
-        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQc7Jzc_qhEpgCd-lCxddWqxfE931TW3aWU7Op1hAXK9j6CdsJve3DkRCjMJpmbchlX1MSH7IJSJdXneOqvSwgtJ_oLgN_eelBWR2UTvz4eqg"
-            alt="Biscuit Image" class="post-image" />
+    <!-- Call to Action -->
+    <div class="cta-box" style="margin-top: 30px;">
+      <p>If you learnt anything from this post, then buy me biscuit 🍪</p>
+      <a href="thank.html" class="cta-button">Buy Biscuit</a>
+    </div>
+  </main>
 
-        <article class="post-body">
-            <p>Biscuits have been around for centuries, offering a delightful crunch and comfort in every bite. Unlike
-                bread, biscuits are quicker to make, often more flavorful, and perfect with tea or coffee.</p>
-            <p>Whether buttery, sweet, or savory, biscuits adapt to any meal. Their texture, portability, and nostalgic
-                appeal make them a favorite snack across cultures.</p>
-            <p>So next time you reach for bread, maybe consider a biscuit instead. It might just brighten your day.</p>
-        </article>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- <h2 class="footer-title">🍪 Buy Me Biscuit</h2> -->
+      <p class="footer-subtitle">Crunchy thoughts, crumbly stories.</p>
 
-        <!-- Call to Action -->
-        <div class="cta-box">
-            <p>If you learnt anything from this post, then buy me biscuit 🍪</p>
-            <a href="thank.html" class="cta-button">Buy Biscuit</a>
-        </div>
-    </main>
-    <footer class="footer">
-        <div class="footer-container">
-            <h2 class="footer-title">🍪 Buy Me Biscuit</h2>
-            <p class="footer-subtitle">Crunchy thoughts, crumbly stories.</p>
+      <ul class="footer-links">
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Home</a></li>
+      </ul>
 
-            <ul class="footer-links">
-                <li><a href="#">About Me</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Home</a></li>
-            </ul>
+      <p class="footer-credit">Made with ❤️ in Nigeria · © 2025</p>
+    </div>
+  </footer>
 
-            <p class="footer-credit">Made with ❤️ in Nigeria · © 2025</p>
-        </div>
-    </footer>
-    <script>
-        function toggleMenu() {
-            document.body.classList.toggle('menu-open');
+  <!-- Script -->
+  <script>
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open');
+    }
+
+    // Get post ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('id');
+
+    // Fetch and display post
+    fetch(`https://biscuitserver.onrender.com/api/posts/${postId}`)
+      .then(res => res.json())
+      .then(post => {
+        document.querySelector('.post-title').textContent = post.title;
+
+        const formattedTime = new Date(post.created_at).toLocaleDateString();
+        document.querySelector('.timestamp').textContent = `Posted on ${formattedTime}`;
+
+        const image = document.querySelector('.post-image');
+        if (post.image_url) {
+          image.src = post.image_url;
+          image.style.display = 'block';
         }
-    </script>
+
+        document.querySelector('.post-body').innerHTML = `<p>${post.content.replace(/\n/g, '</p><p>')}</p>`;
+      })
+      .catch(err => {
+        console.error(err);
+        document.querySelector('.post-title').textContent = 'Post not found';
+        document.querySelector('.timestamp').textContent = '';
+        document.querySelector('.post-body').innerHTML = '<p>This post may not exist or something went wrong.</p>';
+      });
+  </script>
 </body>
 
 </html>

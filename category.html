@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category – Buy Me Biscuit</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar">
+    <a href="index.html" style="text-decoration: none;">
+      <h1>🍪 Buy Me Biscuit</h1>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav id="sideMenu" class="side-menu">
+    <button onclick="toggleMenu()" class="close-btn">×</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Contact Me</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
+
+  <main>
+    <h2 id="categoryTitle" class="section-title">Category: ...</h2>
+    <section class="blog-feed" id="categoryPosts">
+      <p>Loading posts...</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- <h2 class="footer-title">🍪 Buy Me Biscuit</h2> -->
+      <p class="footer-subtitle">Crunchy thoughts, crumbly stories.</p>
+      <ul class="footer-links">
+        <li><a href="#">About Me</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Home</a></li>
+      </ul>
+      <p class="footer-credit">Made with ❤️ in Nigeria · © 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.body.classList.toggle('menu-open');
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('name');
+    document.getElementById('categoryTitle').textContent = `Category: ${category}`;
+
+    fetch(`https://biscuitserver.onrender.com/api/posts/category/${category}`)
+      .then(res => res.json())
+      .then(posts => {
+        const container = document.getElementById('categoryPosts');
+        container.innerHTML = '';
+
+        if (posts.length === 0) {
+          container.innerHTML = '<p>No posts found in this category.</p>';
+          return;
+        }
+
+        posts.forEach(post => {
+          const a = document.createElement('a');
+          a.href = `singlepost.html?id=${post.id}`;
+          a.className = 'blog-post';
+          a.innerHTML = `
+            <img src="${post.image_url}" alt="Post Image">
+            <div class="post-content">
+              <h2>${post.title}</h2>
+              <p>${post.content.slice(0, 100)}...</p>
+              <span>Read More</span>
+            </div>
+          `;
+          container.appendChild(a);
+        });
+      })
+      .catch(() => {
+        document.getElementById('categoryPosts').innerHTML = '<p>Error loading posts.</p>';
+      });
+  </script>
+</body>
+
+</html>

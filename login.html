@@ -65,7 +65,7 @@
             const password = form.password.value.trim();
 
             try {
-                const res = await fetch('http://localhost:3000/api/login', {
+                const res = await fetch('https://biscuitserver.onrender.com/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password }),
@@ -83,7 +83,7 @@
 
                     // ✅ Only redirect once
                     setTimeout(() => {
-                        window.location.href = 'admin/admin.html';
+                        window.location.href = 'admin/adminHome.html';
                     }, 1500);
                 } else {
                     message.style.color = 'red';
