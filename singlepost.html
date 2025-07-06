@@ -101,6 +101,12 @@
         document.querySelector('.timestamp').textContent = '';
         document.querySelector('.post-body').innerHTML = '<p>This post may not exist or something went wrong.</p>';
       });
+
+     if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/buymebiscuit/service-worker.js')
+        .then(reg => console.log('✅ Service Worker registered', reg.scope))
+        .catch(err => console.error('❌ Service Worker error:', err));
+    }
   </script>
 </body>
 
