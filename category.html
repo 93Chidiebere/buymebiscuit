@@ -89,6 +89,12 @@
       .catch(() => {
         document.getElementById('categoryPosts').innerHTML = '<p>Error loading posts.</p>';
       });
+
+      if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker registered', reg.scope))
+        .catch(err => console.error('❌ Service Worker error:', err));
+    }
   </script>
 </body>
 
