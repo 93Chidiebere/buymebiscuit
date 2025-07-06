@@ -1,16 +1,16 @@
 const CACHE_NAME = 'biscuit-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/css/style.css',
-  '/admin.html',
-  '/adminHome.html',
-  '/editpost.html',
-  '/category.html',
-  '/singlepost.html',
-  '/login.html',
-  '/signup.html',
+  '/buymebiscuit/',
+  '/buymebiscuit/index.html',
+  '/buymebiscuit/styles.css',
+  '/buymebiscuit/css/style.css',
+  '/buymebiscuit/admin.html',
+  '/buymebiscuit/adminHome.html',
+  '/buymebiscuit/editpost.html',
+  '/buymebiscuit/category.html',
+  '/buymebiscuit/singlepost.html',
+  '/buymebiscuit/login.html',
+  '/buymebiscuit/signup.html',
   'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap'
 ];
 self.addEventListener('install', (event) => {
